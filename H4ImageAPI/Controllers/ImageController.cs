@@ -22,5 +22,21 @@ namespace H4ImageAPI.Controllers
                 return Problem(e.Message);
             }
         }
+        [Route("[action]")]
+        [HttpPost]
+        public IActionResult SaveImage([FromForm] string base64)
+        {
+            try
+            {
+                imageToBase64 = new ImageToBase64();
+                return Ok(imageToBase64.SaveBase64Image(base64));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
